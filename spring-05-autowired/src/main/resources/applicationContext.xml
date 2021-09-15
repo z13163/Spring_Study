@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--开启注解支持-->
+    <context:annotation-config/>
+<!--
+    ByName
+    在容器的上下文中自动查找与自己set方法(对应的字段)相匹配的beanID
+    ByType
+    在容器的上下文中自动查找与自己对象属性类型相同的bean
+-->
+
+<!--    <bean id="people" class="com.kq.pojo.People" autowire="byType">-->
+<!--        <property name="name" value="demo"/>-->
+<!--&lt;!&ndash;        自动装配&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="cat" ref="cat"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="dog" ref="dog"/>&ndash;&gt;-->
+<!--    </bean>-->
+
+<!--    <bean id="cat" class="com.kq.pojo.Cat"/>-->
+<!--&lt;!&ndash;    <bean id="dog" class="com.kq.pojo.Dog"/>&ndash;&gt;-->
+<!--    <bean id="dog111" class="com.kq.pojo.Dog"/>-->
+
+
+<!--    使用注解-->
+    <bean id="people" class="com.kq.pojo.People"/>
+    <bean id="cat" class="com.kq.pojo.Cat"/>
+    <bean id="dog" class="com.kq.pojo.Dog"/>
+</beans>

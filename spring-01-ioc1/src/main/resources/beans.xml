@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--使用Spring创建对象，在Spring中成为Beans
+        类型 变量名 = new 对象();
+        id=变量名
+        class=new 对象
+
+    -->
+
+    <bean id="UserDaoImpl" class="com.kq.dao.UserDaoImpl"/>
+    <bean id="UserDaoMysql" class="com.kq.dao.UserDaoMysql"/>
+
+<!--    ref：应用spring容器中创建好的对象  可以称为动态赋值-->
+    <bean id="UserServiceImpl" class="com.kq.service.UserServiceImpl">
+        <property name="userDao" ref="UserDaoImpl"/>
+    </bean>
+
+</beans>

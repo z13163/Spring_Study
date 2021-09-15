@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--使用Spring创建对象，在Spring中成为Beans
+        类型 变量名 = new 对象();
+        id=变量名
+        class=new 对象
+        原型模式：每次从容器中get的时候，都会产生一个新的对象
+    -->
+<!--    注册bean-->
+    <bean id="userService" class="com.kq.service.UserServiceImpl"/>
+    <bean id="log" class="com.kq.log.Log"/>
+    <bean id="afterLog" class="com.kq.log.AfterLog"/>
+<!--    配置aop-->
+<!--    方式三：注解-->
+    <bean id="annotation" class="com.kq.diy.AnnotationPointCut"/>
+<!--    开启注解支持-->
+    <aop:aspectj-autoproxy/>
+
+<!--    <aop:config>-->
+<!--&lt;!&ndash;        首先需要一个切入点   execution要执行的位置（返回值、类、方法名）&ndash;&gt;-->
+<!--        <aop:pointcut id="pointcut" expression="execution(* com.kq.service.UserServiceImpl.*(..))"/>-->
+<!--&lt;!&ndash;        执行环绕增强-->
+<!--        方式一；使用原生-->
+<!--&ndash;&gt;-->
+<!--        <aop:advisor advice-ref="log" pointcut-ref="pointcut"/>-->
+<!--        <aop:advisor advice-ref="afterLog" pointcut-ref="pointcut"/>-->
+<!--    </aop:config>-->
+
+<!--    方式二：自定义切面类-->
+<!--    <bean id="diy" class="com.kq.diy.DiyPointCut"/>-->
+<!--    <aop:config>-->
+<!--        <aop:aspect ref="diy">-->
+<!--            &lt;!&ndash;        切入点&ndash;&gt;-->
+<!--            <aop:pointcut id="point" expression="execution(* com.kq.service.UserServiceImpl.*(..))"/>-->
+<!--            &lt;!&ndash;        通知&ndash;&gt;-->
+<!--            <aop:before method="before" pointcut-ref="point"/>-->
+<!--            <aop:after method="after" pointcut-ref="point"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+</beans>
